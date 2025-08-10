@@ -8,3 +8,7 @@ libs = ["lib"]
 
 [fmt]
 line_length = 80
+
+[rpc_endpoints]
+mainnet = "${MAINNET_FORK_URL}"
+

@@ -4,7 +4,8 @@ pragma solidity 0.8.24;
 import {Test, console2} from "forge-std/Test.sol";
 import {IERC20} from "../../src/interfaces/IERC20.sol";
 import {IWETH} from "../../src/interfaces/IWETH.sol";
-import {IUniswapV2Router02} from "../../src/interfaces/uniswap-v2/IUniswapV2Router02.sol";
+import {IUniswapV2Router02} from
+    "../../src/interfaces/uniswap-v2/IUniswapV2Router02.sol";
 import {DAI, WETH, MKR, UNISWAP_V2_ROUTER_02} from "../../src/Constants.sol";
 
 contract UniswapV2SwapAmountsTest is Test {
@@ -15,7 +16,7 @@ contract UniswapV2SwapAmountsTest is Test {
     IUniswapV2Router02 private constant router =
         IUniswapV2Router02(UNISWAP_V2_ROUTER_02);
 
-    function test_getAmountsOut() public {
+    function test_getAmountsOut() public view {
         address[] memory path = new address[](3);
         path[0] = WETH;
         path[1] = DAI;
@@ -29,7 +30,7 @@ contract UniswapV2SwapAmountsTest is Test {
         console2.log("MKR", amounts[2]);
     }
 
-    function test_getAmountsIn() public {
+    function test_getAmountsIn() public view {
         address[] memory path = new address[](3);
         path[0] = WETH;
         path[1] = DAI;

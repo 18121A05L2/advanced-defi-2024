@@ -52,6 +52,11 @@ contract UniswapV2SwapTest is Test {
         uint256 amountOutMin = 1;
 
         // Write your code here
+        vm.startPrank(user);
+        router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+            amountIn, amountOutMin, path, user, block.timestamp
+        );
+        vm.stopPrank();
         // Don’t change any other code
 
         assertGe(mkr.balanceOf(user), amountOutMin, "MKR balance of user");
@@ -69,6 +74,15 @@ contract UniswapV2SwapTest is Test {
         uint256 amountInMax = 1e18;
 
         // Write your code here
+        vm.startPrank(user);
+        router.swapTokensForExactTokens({
+            amountOut: amountOut,
+            amountInMax: amountInMax,
+            path: path,
+            to: user,
+            deadline: block.timestamp
+        });
+        vm.stopPrank();
         // Don’t change any other code
 
         assertEq(mkr.balanceOf(user), amountOut, "MKR balance of user");
